@@ -50,7 +50,7 @@ const CreatorBenefitsSection = () => {
 
       {/* Dotted pattern */}
       <div
-        className="absolute inset-0 opacity-[0.05] pointer-events-none"
+        className="absolute inset-0 opacity-[0.07] pointer-events-none"
         style={{
           backgroundImage: "radial-gradient(hsl(var(--primary)) 1px, transparent 1px)",
           backgroundSize: "24px 24px",
