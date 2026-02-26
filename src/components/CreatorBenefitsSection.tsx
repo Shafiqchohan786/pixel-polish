@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Gift, TrendingUp, Users, Zap, ShieldCheck, Sparkles, Plus } from "lucide-react";
+import CreateWindowModal from "./CreateWindowModal";
 
 const benefitCards = [
   {
@@ -43,6 +45,8 @@ const fadeUp = {
 };
 
 const CreatorBenefitsSection = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
       {/* Background */}
@@ -132,10 +136,16 @@ const CreatorBenefitsSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.4 + i * 0.15 }}
-                  whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                  whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                  animate={{ y: [0, -4, 0] }}
                   className="glass rounded-xl px-5 py-4 group cursor-pointer border border-border/40 hover:border-primary/30 transition-colors duration-300"
+                  style={{ animationDelay: `${i * 0.3}s` }}
                 >
-                  <div className="flex items-center gap-3">
+                  <motion.div
+                    animate={{ y: [0, -3, 0] }}
+                    transition={{ duration: 2.5 + i * 0.5, repeat: Infinity, ease: "easeInOut" }}
+                    className="flex items-center gap-3"
+                  >
                     <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
                       <card.icon className="w-4 h-4" />
                     </div>
@@ -143,7 +153,7 @@ const CreatorBenefitsSection = () => {
                       <h4 className="text-sm font-display font-bold text-foreground">{card.title}</h4>
                       <p className="text-xs text-muted-foreground">{card.desc}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>
@@ -175,6 +185,7 @@ const CreatorBenefitsSection = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => setModalOpen(true)}
               className="mt-10 inline-flex items-center gap-3 px-8 py-4 rounded-xl border border-primary/50 bg-primary/5 text-foreground font-display font-semibold text-base hover:bg-primary/10 hover:border-primary transition-all duration-300 glow"
             >
               <Plus className="w-4 h-4 text-primary" />
@@ -184,6 +195,8 @@ const CreatorBenefitsSection = () => {
           </div>
         </div>
       </div>
+
+      <CreateWindowModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </section>
   );
 };
