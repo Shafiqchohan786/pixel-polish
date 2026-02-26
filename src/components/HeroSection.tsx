@@ -1,11 +1,20 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import CountdownTimer from "./CountdownTimer";
 import TypewriterText from "./TypewriterText";
 import SpinnerIcon from "./SpinnerIcon";
+import EnterProtocolModal from "./EnterProtocolModal";
 
 const HeroSection = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const scrollToVision = () => {
+    const el = document.getElementById("vision-section");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Background */}
@@ -44,7 +53,7 @@ const HeroSection = () => {
           <span className="text-sm font-medium text-muted-foreground">
             Protocol Activation
           </span>
-          <span className="text-sm font-bold text-primary">29 March</span>
+          <span className="text-sm font-bold text-gradient">29 March</span>
         </motion.div>
 
         {/* Countdown */}
@@ -65,7 +74,7 @@ const HeroSection = () => {
           className="flex items-center justify-center gap-4 mb-6"
         >
           <SpinnerIcon className="w-16 h-16 md:w-20 md:h-20" />
-          <h1 className="text-5xl md:text-7xl font-display font-bold text-gradient">
+          <h1 className="text-5xl md:text-7xl font-display font-bold text-gradient drop-shadow-[0_0_30px_hsl(174_72%_56%/0.3)]">
             Evumus AI
           </h1>
         </motion.div>
@@ -88,9 +97,9 @@ const HeroSection = () => {
           transition={{ delay: 1.6 }}
           className="space-y-1 mb-10 text-lg md:text-xl text-muted-foreground"
         >
-          <p>Where AI meets <span className="font-semibold text-primary">Web3</span>.</p>
-          <p>Where predictions become <span className="font-semibold text-foreground">power</span>.</p>
-          <p>Where AI Employees <span className="font-semibold text-foreground">build your future</span>.</p>
+          <p>Where AI meets <span className="font-semibold text-gradient">Web3</span>.</p>
+          <p>Where predictions become <span className="font-semibold text-foreground glow-text">power</span>.</p>
+          <p>Where AI Employees <span className="font-semibold text-gradient">build your future</span>.</p>
         </motion.div>
 
         {/* CTA Buttons */}
@@ -100,13 +109,28 @@ const HeroSection = () => {
           transition={{ delay: 1.9 }}
           className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
         >
-          <button className="group glass glow px-8 py-3.5 rounded-lg border border-primary/40 text-foreground font-medium flex items-center justify-center gap-2 transition-all duration-300 hover:border-primary hover:shadow-[0_0_30px_hsl(174_72%_56%/0.3)]">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={() => setModalOpen(true)}
+            className="group relative px-8 py-3.5 rounded-lg font-semibold text-primary-foreground flex items-center justify-center gap-2 transition-all duration-300 overflow-hidden"
+            style={{
+              background: "linear-gradient(135deg, hsl(174 72% 56%), hsl(270 60% 65%))",
+              boxShadow: "0 0 25px hsl(174 72% 56% / 0.3), 0 0 50px hsl(270 60% 65% / 0.15)",
+            }}
+          >
             Enter the Protocol
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </button>
-          <button className="glass px-8 py-3.5 rounded-lg text-foreground font-medium transition-all duration-300 hover:bg-muted/50">
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={scrollToVision}
+            className="glass px-8 py-3.5 rounded-lg text-foreground font-medium transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_20px_hsl(174_72%_56%/0.15)]"
+          >
             Explore Vision
-          </button>
+          </motion.button>
         </motion.div>
 
         {/* Stats */}
@@ -122,7 +146,7 @@ const HeroSection = () => {
             { value: "0", label: "Limits" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="text-2xl md:text-3xl font-display font-bold text-primary glow-text">
+              <div className="text-2xl md:text-3xl font-display font-bold text-gradient glow-text">
                 {stat.value}
               </div>
               <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
@@ -148,6 +172,9 @@ const HeroSection = () => {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Modal */}
+      <EnterProtocolModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </section>
   );
 };
