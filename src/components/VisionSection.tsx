@@ -17,7 +17,7 @@ const fadeUp = {
 
 const VisionSection = () => {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
+    <section id="vision-section" className="relative py-24 md:py-32 overflow-hidden">
       {/* Subtle bg gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
       {/* Dotted pattern overlay */}
@@ -48,8 +48,8 @@ const VisionSection = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight text-foreground"
             >
-              Earning the <span className="text-gradient">Future</span>
-              <br />Not Just Finances
+              Earning the <span className="text-gradient drop-shadow-[0_0_20px_hsl(174_72%_56%/0.3)]">Future</span>
+              <br />Not Just <span className="text-gradient">Finances</span>
             </motion.h2>
 
             <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.2 }} className="space-y-4 text-muted-foreground text-lg leading-relaxed">
@@ -92,7 +92,7 @@ const VisionSection = () => {
               transition={{ type: "spring", stiffness: 300 }}
               className="glass rounded-2xl p-6 text-center group cursor-pointer"
             >
-              <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-all duration-300 group-hover:shadow-[0_0_20px_hsl(174_72%_56%/0.2)]">
                 <f.icon className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
               </div>
               <h3 className="font-display font-bold text-lg text-foreground mb-1">{f.title}</h3>
