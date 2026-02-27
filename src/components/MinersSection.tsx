@@ -112,8 +112,8 @@ const MinersSection = () => {
             className="flex justify-center"
           >
             <motion.div
-              animate={{ y: [-8, 8, -8] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              animate={{ y: [-6, 6, -6] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               className="relative"
             >
               <motion.img
@@ -123,18 +123,20 @@ const MinersSection = () => {
                 className="w-72 md:w-96"
                 initial={{ opacity: 0.6 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.6 }}
                 style={{
-                  filter: `drop-shadow(0 0 40px ${activeTheme.glow}) drop-shadow(0 0 80px ${activeTheme.glow})`,
+                  filter: `drop-shadow(0 0 30px ${activeTheme.glow}) drop-shadow(0 0 60px ${activeTheme.glow}) drop-shadow(0 0 100px ${activeTheme.glow})`,
+                  transition: "filter 0.6s ease",
                 }}
               />
+              {/* Ground glow */}
               <motion.div
                 key={`glow-${selectedTheme}`}
-                className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-48 h-6 rounded-full blur-xl"
+                className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-56 h-8 rounded-full blur-2xl"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                transition={{ duration: 0.6 }}
-                style={{ background: activeTheme.glow }}
+                animate={{ opacity: [0.3, 0.55, 0.3] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                style={{ background: activeTheme.glow, transition: "background 0.6s ease" }}
               />
             </motion.div>
           </motion.div>
