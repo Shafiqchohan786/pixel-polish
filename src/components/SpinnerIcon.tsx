@@ -15,7 +15,13 @@ const SpinnerIcon = ({ className = "" }: { className?: string }) => {
   ];
 
   return (
-    <svg viewBox="0 0 100 100" className={className} fill="none">
+    <svg
+      viewBox="0 0 100 100"
+      width="80"
+      height="80"
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <defs>
         <linearGradient id="starburst-grad" x1="0%" y1="100%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#b385e0" />
