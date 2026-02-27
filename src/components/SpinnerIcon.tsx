@@ -18,9 +18,9 @@ const SpinnerIcon = ({ className = "" }: { className?: string }) => {
     <svg viewBox="0 0 100 100" className={className} fill="none">
       <defs>
         <linearGradient id="starburst-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="hsl(270 60% 70%)" />
-          <stop offset="50%" stopColor="hsl(220 70% 65%)" />
-          <stop offset="100%" stopColor="hsl(195 80% 70%)" />
+          <stop offset="0%" stopColor="#b385e0" />
+          <stop offset="50%" stopColor="#6b8de6" />
+          <stop offset="100%" stopColor="#70c4e6" />
         </linearGradient>
       </defs>
       {rays.map((ray, i) => (
