@@ -73,7 +73,12 @@ const HeroSection = () => {
           transition={{ delay: 1, type: "spring", stiffness: 100 }}
           className="flex items-center justify-center gap-4 mb-6"
         >
-          <SpinnerIcon className="w-16 h-16 md:w-20 md:h-20" />
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+          >
+            <SpinnerIcon className="w-16 h-16 md:w-20 md:h-20" />
+          </motion.div>
           <h1 className="text-5xl md:text-7xl font-display font-bold text-gradient drop-shadow-[0_0_30px_hsl(174_72%_56%/0.3)]">
             Evumus AI
           </h1>
